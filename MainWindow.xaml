@@ -1,0 +1,55 @@
+﻿<Window
+  x:Class="QLThuoc.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+  xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+  xmlns:i="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+  xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+  xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+  xmlns:dxwuin="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation"
+  xmlns:local="clr-namespace:QLThuoc"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d"
+  Title="Quản lý bán thuốc" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <dxnav:TileNavPane Name="Menu" FlyoutShowDirection="Inverted" VerticalAlignment="Bottom" Grid.Row="1" >
+      <dxnav:TileNavPane.NavButtons>
+        <dxnav:NavButton Visibility="Hidden" IsMain="True" />
+      </dxnav:TileNavPane.NavButtons>
+      <dxnav:TileNavCategory Content="Chức năng" x:Name="btnMenu" AllowGlyphTheming="True" IsSelected="True">
+        <dxnav:TileNavItem Content="Đối tác" Name="btnDoiTac" Click="btnDoiTac_Click"/>
+        <dxnav:TileNavItem Content="Thuốc" Name="btnThuoc" Click="btnThuoc_Click"/>
+        <dxnav:TileNavItem Content="Hóa đơn" Name="btnHoaDon" >
+          <dxnav:TileNavSubItem Content="Mua thuốc" Name="btnMuaThuoc" Click="btnMuaThuoc_Click"/>
+          <dxnav:TileNavSubItem Content="Bán thuốc" Name="btnBanThuoc" Click="btnBanThuoc_Click"/>
+        </dxnav:TileNavItem>
+        <dxnav:TileNavItem Content="Báo cáo" Name="btnBaoCao">
+          <dxnav:TileNavSubItem Content="Doanh thu" Name="btnDoanhThu" Click="btnDoanhThu_Click"/>
+          <dxnav:TileNavSubItem Content="Tồn kho" Name="btnTonKho" Click="btnTonKho_Click"/>
+        </dxnav:TileNavItem>
+      </dxnav:TileNavCategory>
+    </dxnav:TileNavPane>
+
+    <dxwui:NavigationFrame Grid.Row="0" Margin="5"
+      x:Name="frame"
+      AnimationType="SlideVertical"
+      Source="Home" Navigated="frame_Navigated" >
+
+      <i:Interaction.Behaviors>
+        <dxwuin:FrameNavigationService  x:Name="Service"/>
+      </i:Interaction.Behaviors>
+    </dxwui:NavigationFrame>
+
+  </Grid>
+
+
+
+</Window>
